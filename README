@@ -1,5 +1,8 @@
+Basement
+------------------------------------------------------------------------
+
 What is it?
-------------------------------------
+------------------------------------------------------------------------
 Basement is a webapp built in flask to allow for the easy addition of webscrapers to a database and search framework.
 Currently only a pastebin scraper has been built.
 
@@ -12,7 +15,7 @@ In this form it is designed to be run on Macintosh OSX but little modification n
 Ubunutu.
 
 Licence
--------------------------------------
+------------------------------------------------------------------------
 MIT License
 
 Copyright (c) 2016 Ryan Arthur Robert Rushton
@@ -36,10 +39,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 Installation
-----------------------------------------
+------------------------------------------------------------------------
 Please see the requirements.txt file for python packages required.
 Elasticsearch, Tor and PostgreSQL are also required.
 
 How to run?
------------------------------------------
+------------------------------------------------------------------------
 From the Basement directory run "flask/bin/python run.py" in the command line.
