@@ -1,0 +1,136 @@
+{% macro render_pagination(pagination) %}
+<div class=pagination>
+    {%- for page in pagination.iter_pages() %}
+    {% if page %}
+    {% if page != pagination.page %}
+    <a href="{{ url_for_other_page(page) }}">{{ page }}</a>
+    {% else %}
+    <strong>{{ page }}</strong>
+    {% endif %}
+    {% else %}
+    <span class=ellipsis>…</span>
+    {% endif %}
+    {%- endfor %}
+    {% if pagination.has_next %}
+    <a href="{{ url_for_other_page(pagination.page + 1)}}">Next &raquo;</a>
+    {% endif %}
+</div>
+{% endmacro %}
+
+<script src="../static/scripts/index.js" type="text/javascript"></script>
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-fluid" id="heading-containter">
+    <div class="row">
+        <h2>Basement Search</h2>
+    </div>
+    <div class="jumbotron" id="clear-jumbo" style="padding-left: 20px;padding-top: 20px;padding-bottom: 1px">
+        <form class="form form-inline" action="" method="post" name="search">
+            {{ form.hidden_tag() }}
+            <label style="font-size: 150%">
+                Enter your search terms <br style="line-height: 220%">
+            </label>
+            <label id="search-box">
+                {{ form.search_terms(size=50) }}<br style="line-height: 250%">
+            </label>
+            <label>
+                <input type="submit" class="btn btn-primary" value="Search">
+            </label>
+
+        </form>
+    </div>
+</div>
+<div class="container-fluid" style="padding-left: 40px;padding-right: 40px">
+
+    {% if pastes %}
+    <div class="jumbotron" id="jumbo">
+        {% if pastes.total_hits == 1 %}
+        1 entry was found <br><br>
+        {% else %}
+        {{pastes.total_hits}} entries were found. <br>
+        <div class=pagination>
+            {% if pastes.has_prev %}
+            <a href="{{ url_for('index', page=pastes.prev_num, search_term=search_term) }}">&lt;&lt; Back</a> |
+            {% endif %}
+            {%- for page in pastes.iter_pages() %}
+            {% if page %}
+            {% if page != pastes.page %}
+            <a href="{{ url_for('index', page=page, search_term=search_term) }}">{{ page }}</a>
+            {% else %}
+            <strong>{{ page }}</strong>
+            {% endif %}
+            {% else %}
+            <span class=ellipsis>…</span>
+            {% endif %}
+            {%- endfor %}
+            {% if pastes.has_next %}
+            | <a href="{{ url_for('index', page=pastes.next_num, search_term=search_term) }}">Next &gt;&gt;</a>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="table-responsive">
+            <table class="table table-bordered" id="search-table">
+                <thead>
+                <tr>
+                    <div class="row">
+                        <th style="width:15%;font-size: 110%">Original Paste</th>
+                        <th style="width:70%;font-size: 110%">Content</th>
+                        <th style="width:15%;font-size: 110%">Date and Time</th>
+                    </div>
+                </tr>
+                </thead>
+                {% for paste in pastes.items %}
+                <tr>
+                    <div class="row" style="background-color: white">
+                        <td style="width:15%"><a href="{{paste.url}}" target="_blank">{{paste.name}}</a></td>
+                        <td style="width:70%">
+                            {% if paste.content|length < 100000 %}
+                            <pre id="pre-custom">
+                            {{paste.content}}
+                        </pre>
+                            {% else %}
+                            This file was too large to load.
+                            <a href="{{ url_for('download_paste', paste_id=paste.meta.id) }}" target="_blank">
+                                Click to download.</a>
+                            {% endif %}
+                        </td>
+                        <td style="width:15%">{{paste.datetime}}</td>
+                    </div>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class=pagination>
+            {% if pastes.has_prev %}
+            <a href="{{ url_for('index', page=pastes.prev_num, search_term=search_term) }}">&lt;&lt; Back</a> |
+            {% endif %}
+            {%- for page in pastes.iter_pages() %}
+            {% if page %}
+            {% if page != pastes.page %}
+            <a href="{{ url_for('index', page=page, search_term=search_term) }}">{{ page }}</a>
+            {% else %}
+            <strong>{{ page }}</strong>
+            {% endif %}
+            {% else %}
+            <span class=ellipsis>…</span>
+            {% endif %}
+            {%- endfor %}
+            {% if pastes.has_next %}
+            | <a href="{{ url_for('index', page=pastes.next_num, search_term=search_term) }}">Next &gt;&gt;</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+
+{% if nopastes %}
+<div class="container-fluid" style="padding-left: 70px;margin-top: 20px">
+    <p>
+        No pastes were found containing "{{search_term}}".
+    </p>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,8 @@
+#!/Users/ryanrushton/PycharmProjects/PasteThief/flask/bin/python3
+# Copyright 2014, Damian Johnson and The Tor Project
+# See LICENSE for licensing information
+
+import stem.interpreter
+
+if __name__ == '__main__':
+  stem.interpreter.main()

@@ -1,0 +1,103 @@
+body {
+    background: white; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, grey); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, grey); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, grey); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, grey); /* Standard syntax */
+    min-height: 100vh;
+    color: black;
+}
+
+table {
+    background-color: rgba(250, 250, 250, 10) !important;
+}
+
+thead{
+    background: grey; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(black, grey); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(black, grey); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(black, grey); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(black, darkgrey); /* Standard syntax */
+    color: white;
+}
+
+h2{
+    font-family: Futura!important;
+    font-weight: bolder !important;
+}
+
+#jumbo {
+    background: white; /* For browsers that do not support gradients */
+    color: black;
+    font-family: Futura;
+}
+
+#clear-jumbo{
+    background: rgba(240, 240, 240, 0);
+}
+
+#search-box {
+    font-family: Futura!important;
+    font-weight: normal !important;
+}
+
+#search-table {
+    table-layout:fixed;
+    word-wrap:break-word;
+    background: transparent;
+    color: black;
+}
+
+#heading-containter {
+    padding-left: 40px;
+    padding-right: 40px;
+    color: black;
+    font-family: Futura !important;
+}
+
+#pre-custom {
+    max-height: 400px;
+    overflow: scroll;
+    background-color: transparent;
+    color: black;
+}
+
+.navbar-custom div.navbar-collapse
+{
+    border-top:none;
+    box-shadow:none;
+}
+
+.navbar-custom{
+    background-color: #113384;
+    border: none;
+}
+
+.navbar-custom .navbar-nav {
+    font-size: 150%;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    font-family: Audiowide, Futura, sans-serif;
+    color: lightgrey;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.navbar-custom .navbar-brand {
+    color: white;
+    font-size: 150%;
+    max-width: 250px;
+    overflow: visible;
+    padding-top: 3px;
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+    color: grey;
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+    color: grey;
+}

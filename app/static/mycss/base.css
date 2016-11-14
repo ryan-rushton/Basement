@@ -1,0 +1,105 @@
+body {
+    font-family: 'Audiowide', 'Andale Mono' !important;
+    background: white; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, #665766); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, #665766); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, #665766); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#0A000A, #120025); /* Standard syntax */
+    min-height: 100vh;
+    color: black;
+}
+
+table {
+    font-family: "Andale Mono";
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #000030;
+}
+
+thead{
+    background: rgba(240, 240, 240, 0);
+    color: white;
+}
+
+#jumbo {
+    background-image: url("../images/Orion_Nebula_-_Hubble_2006_mosaic_custom2.jpg");
+    color: lightgrey;
+}
+
+#clear-jumbo{
+    background: rgba(240, 240, 240, 0);
+}
+
+#search-box {
+    color: black;
+    font-family: "Andale Mono";
+}
+
+#search-table {
+    table-layout:fixed;
+    word-wrap:break-word;
+    background: transparent;
+    color: white
+}
+
+#heading-containter {
+    padding-left: 40px;
+    padding-right: 40px;
+    color: lightgrey;
+}
+
+#pre-custom {
+    max-height: 400px;
+    overflow: scroll;
+    background-color: #000030;
+    color: white;
+}
+
+.modal-custom {
+    background-color: #000030 !important;
+    color: lightgrey !important;
+}
+
+.navbar-custom div.navbar-collapse
+{
+    border-top:none;
+    box-shadow:none;
+}
+
+.navbar-custom{
+    background-image: url("../images/Orion_Nebula_-_Hubble_2006_mosaic_custom2.jpg");
+    background-position: left;
+    border: none;
+    margin-bottom: 0pt;
+}
+
+.navbar-custom .navbar-nav {
+    font-family: "Audiowide";
+    font-size: 150%;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color: #11bcb6;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.navbar-custom .navbar-brand {
+    color: white;
+    font-size: 150%;
+    font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+    max-width: 250px;
+    overflow: visible;
+    padding-top: 3px;
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+    color: lightgrey;
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+    color: grey;
+}
