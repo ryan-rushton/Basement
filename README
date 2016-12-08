@@ -45,4 +45,6 @@ Elasticsearch, Tor and PostgreSQL are also required.
 
 How to run?
 ------------------------------------------------------------------------
-From the Basement directory run "flask/bin/python run.py" in the command line.
+First install a virtual environment using python 3, I used one called virtual_env.
+Then install the libraries outlined in requirements.txt.
+Finally using the virtual environment envoke the run.py file.
