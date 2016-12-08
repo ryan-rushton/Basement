@@ -1,4 +1,4 @@
-#!flask/bin/python
+#!virtual_env/bin/python
 import types
 from migrate.versioning import api
 import config

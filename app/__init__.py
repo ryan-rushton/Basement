@@ -12,6 +12,8 @@ SOCKS_PORT = 9050
 TOR_PATH = '/usr/local/bin/tor'
 tor_enabled = False
 
+elasticsearch_path = '/usr/local/bin/elasticsearch'
+
 app = Flask(__name__)
 app.config.from_object('config')
 meta = MetaData()
@@ -21,10 +23,10 @@ meta.create_all()
 
 if config.start_app:
     # Start a elasticsearch subprocess
-    Popen('/usr/local/bin/elasticsearch')
+    Popen(elasticsearch_path)
 
     # Default connection to elasticsearch at localhost:9200
-    es = Elasticsearch(sniff_on_start=True, sniff_on_connection_fail=True, sniffer_timeout=60)
+    es = Elasticsearch()
 
     if tor_enabled:
         # Setup a printer so tor can indicate its startup status in the terminal

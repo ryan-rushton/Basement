@@ -47,4 +47,9 @@ How to run?
 ------------------------------------------------------------------------
 First install a virtual environment using python 3, I used one called virtual_env.
 Then install the libraries outlined in requirements.txt.
+Ensure postgresql is installed and a table exists called basement. On OSX I used the PostgreSQL app. Config for
+postgres is in the config.py file.
+Run the db_create.py script.
+Make sure elasticsearch is installed and the path to the executable is included in app/__init__.py file. I used the
+homebrew install for OSX.
 Finally using the virtual environment envoke the run.py file.

@@ -2,6 +2,7 @@
 This is just a module for some general functions
 """
 
+
 def convert_bytes_to_size(some_bytes):
     """
     Convert number of bytes to appropriate form for display.
