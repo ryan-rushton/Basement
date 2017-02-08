@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from elasticsearch import Elasticsearch
 from stem.process import launch_tor_with_config
+from celery import Celery
 import config
 
 # Ports to be used with tor and tors path
@@ -66,3 +67,24 @@ if config.start_app:
 
     # Start a database worker subprocess
     db_worker.start()
+
+# Make and start celery application
+
+
+def make_celery(app_instance):
+    celery_instance = Celery(app_instance.import_name, backend=app_instance.config['CELERY_RESULT_BACKEND'],
+                    broker=app_instance.config['CELERY_BROKER_URL'])
+    celery_instance.conf.update(app_instance.config)
+    TaskBase = celery_instance.Task
+
+    class ContextTask(TaskBase):
+        abstract = True
+
+        def __call__(self, *args, **kwargs):
+            with app_instance.app_context():
+                return TaskBase.__call__(self, *args, **kwargs)
+
+    celery_instance.Task = ContextTask
+    return celery_instance
+
+celery_basement = make_celery(app)

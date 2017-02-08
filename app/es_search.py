@@ -13,14 +13,14 @@ def add_to_es(model_instance):
     :param model_instance: The model object to be added.
     :return: Bool
     """
+    json = model_instance.jsonify()
+    model_name = model_instance.__class__.__name__.lower()
     try:
-        json = model_instance.jsonify()
-        model_name = model_instance.__class__.__name__.lower()
         result = es.index(index=model_name, doc_type=model_name, body=json)
         logger.info('Added to elasticsearch: %s', result)
         return True
     except:
-        logger.error('Couldn\'t add to elasticsearch: %s', result)
+        logger.error('Couldn\'t add to elasticsearch: %s', model_name)
 
 
 def delete_from_es(model_instance):
