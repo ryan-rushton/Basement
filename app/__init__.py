@@ -17,14 +17,10 @@ elasticsearch_path = '/usr/local/bin/elasticsearch'
 
 app = Flask(__name__)
 app.config.from_object('config')
-meta = MetaData()
-db = SQLAlchemy(app, metadata=meta)
-meta.bind = db.engine
-meta.create_all()
 
 if config.start_app:
-    # Start a elasticsearch subprocess
-    Popen(elasticsearch_path)
+    # Start a elasticsearch subprocess, elasticsearch should be started seperately
+    # Popen(elasticsearch_path)
 
     # Default connection to elasticsearch at localhost:9200
     es = Elasticsearch()

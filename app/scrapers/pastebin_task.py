@@ -6,9 +6,6 @@ from datetime import datetime
 from logging import getLogger
 from bs4 import BeautifulSoup
 from app.models import Paste
-from app import db_worker
-import app
-from app.db_worker import DbWorker
 from .tor_requests import tor_request
 
 logger = getLogger(__name__)

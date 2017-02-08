@@ -1,6 +1,5 @@
-from app import es, db
+from app import es
 from elasticsearch_dsl import Search, Q
-from app.models import Paste
 from logging import getLogger
 
 logger = getLogger(__name__)
@@ -30,7 +29,6 @@ def delete_from_es(model_instance):
     :param model_instance: The model object to be deleted.
     :return: Bool
     """
-    json = model_instance.jsonify()
     model_name = model_instance.__class__.__name__.lower()
     s = Search(using=es, index=model_name, doc_type=model_name).query('match', url=model_instance.url)
     s.execute()
@@ -55,6 +53,10 @@ def delete_all_es():
         return False
 
 
+def es_delete_by_date():
+    return None
+
+
 def es_search_by_id(paste_id):
     """
     Simple function to get the elasticsearch database entry from the auto generated id.
@@ -71,19 +73,6 @@ def es_search_by_id(paste_id):
             return response.hits[0]
     logger.info('No hits found for %s', paste_id)
     return None
-
-
-def reindex_es():
-    """
-    Simple function to reindex contents of the database.
-    :return: Bool
-    """
-    all_indexed = True
-    all_pastes = db.session.query(Paste).all()
-    tmp = delete_all_es()
-    for paste in all_pastes:
-        all_indexed = all_indexed and add_to_es(paste)
-    return all_indexed
 
 
 class EsSearch:
