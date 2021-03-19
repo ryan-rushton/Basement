@@ -9,7 +9,7 @@ Flask==0.12
 Flask-SQLAlchemy==2.1
 Flask-WTF==0.14.2
 itsdangerous==0.24
-Jinja2==2.9.5
+Jinja2==2.11.3
 MarkupSafe==0.23
 packaging==16.8
 pbr==1.10.0
